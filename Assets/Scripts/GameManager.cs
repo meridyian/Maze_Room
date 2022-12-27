@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    
+
+    public Maze mazePrefab;
+    private Maze mazeInstance;
+
+
     // create a maze at the start, if space key is pressed regenerate maze
     private void Start()
     {
@@ -19,6 +23,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void BeginGame() {}
-    private void RestartGame() {}
+    private void BeginGame()
+    {
+        mazeInstance = Instantiate(mazePrefab) as Maze;
+    }
+
+    private void RestartGame()
+    {
+        Destroy(mazeInstance.gameObject);
+        BeginGame();
+    }
 }
