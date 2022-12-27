@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Maze : MonoBehaviour
 {
+    public MazePassage passagePrefab;
+    public MazeWall wallPrefab;
     public int sizeX, sizeZ;
     public MazeCell cellPrefab;
     private MazeCell[,] cells;
@@ -18,14 +20,13 @@ public class Maze : MonoBehaviour
     }
     
     
-     
+    // each time when you generate a cell add it to list 
+    // move one random step from last cell in the list, if you cannot remove current from activelist
     public IEnumerator Generate()
     {
         WaitForSeconds delay = new WaitForSeconds(generationStepDelay);
         cells = new MazeCell[size.x, size.z];
-        // each time when you generate a cell add it to list 
         List<MazeCell> activeCells = new List<MazeCell>();
-        // move one random step from last cell in the list, if you cannot remove current from activelist
         DoFirstGenerationStep(activeCells);
         while (activeCells.Count > 0)
         {
@@ -40,19 +41,64 @@ public class Maze : MonoBehaviour
         activeCells.Add(CreateCell(RandomCoordinates));
     }
 
+    
+    // retrieve current cell, check whether the move is possible
+    // remove cells from list
     private void DoNextGenerationStep(List<MazeCell> activeCells)
     {
+        // since you are moving from last cell to a random direaction
         int currentIndex = activeCells.Count - 1;
         MazeCell currentCell = activeCells[currentIndex];
         MazeDirection direction = MazeDirections.RandomValue;
         IntVector2 coordinates = currentCell.coordinates + direction.ToIntVector2();
-        if (ContainsCoordinates(coordinates) && GetCell(coordinates) == null)
+        
+        // while you are inside of the maze 
+        if (ContainsCoordinates(coordinates))
         {
-            activeCells.Add(CreateCell(coordinates));
+            MazeCell neighbor == GetCell(coordinates);
+            //check if the current cell's neighbor doesnt exist yet if you dont have create a cell
+            //since youc reated a cell create a passage among them
+            if (neighbor == null)
+            {
+                neighbor = CreateCell(coordinates);
+                CreatePassage(currentCell, neighbor, direction);
+                activeCells.Add(neighbor);
+            }
+            // if there is already a neighbour put a wall
+            else
+            {
+                CreateWall(currentCell, null, direction);
+                activeCells.RemoveAt(currentIndex);
+            }
         }
+        // if ypu are on  the maze boundaries create a wall
         else
         {
+            CreateWall(currentCell, null, direction);
             activeCells.RemoveAt(currentIndex);
+        }
+        
+    }
+
+    // creates prefabs and instantiates them 
+    private void CreatePassage(MazeCell cell, MazeCell otherCell, MazeDirection direction)
+    {
+        //since the passage will be on the same edge for both of them
+        MazePassage passage = Instantiate(passagePrefab) as MazePassage;
+        passage.Initialize(cell, otherCell, direction);
+        passage = Instantiate(passagePrefab) as MazePassage;
+        passage.Initialize(otherCell, cell, direction.GetOpposite());
+    }
+
+    private void CreateWall(MazeCell cell, MazeCell otherCell, MazeDirection direction)
+    {
+        MazeWall wall = Instantiate(wallPrefab) as MazeWall;
+        wall.Initialize(cell, otherCell, direction);
+        // createwall's second cell wont exist at the edge of the maze
+        if (otherCell != null)
+        {
+            wall = Instantiate(wallPrefab) as MazeWall;
+            wall.Initialize(otherCell, cell, direction.GetOpposite());
         }
     }
     

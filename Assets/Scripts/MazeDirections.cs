@@ -31,5 +31,18 @@ public static class  MazeDirections
     {
         return vectors[(int)direction];
     }
-     
+
+    private static MazeDirection[] opposites =
+    {
+        MazeDirection.South,
+        MazeDirection.West,
+        MazeDirection.North,
+        MazeDirection.East
+    };
+
+    public static MazeDirection GetOpposite(this MazeDirection direction)
+    {
+        return opposites[(int)direction];
+        
+    }
 }
