@@ -6,12 +6,12 @@ using UnityEngine;
 public class Maze : MonoBehaviour
 {
     public MazePassage passagePrefab;
-    public MazeWall wallPrefab;
     public int sizeX, sizeZ;
     public MazeCell cellPrefab;
     private MazeCell[,] cells;
     public IntVector2 size;
     public float generationStepDelay;
+    public MazeWall[] wallPrefabs;
    
 
 
@@ -98,12 +98,12 @@ public class Maze : MonoBehaviour
 
     private void CreateWall(MazeCell cell, MazeCell otherCell, MazeDirection direction)
     {
-        MazeWall wall = Instantiate(wallPrefab) as MazeWall;
+        MazeWall wall = Instantiate(wallPrefabs[Random.Range(0, wallPrefabs.Length)]) as MazeWall;
         wall.Initialize(cell, otherCell, direction);
         // createwall's second cell wont exist at the edge of the maze
         if (otherCell != null)
         {
-            wall = Instantiate(wallPrefab) as MazeWall;
+            wall = Instantiate(wallPrefabs[Random.Range(0, wallPrefabs.Length)]) as MazeWall;
             wall.Initialize(otherCell, cell, direction.GetOpposite());
         }
     }
