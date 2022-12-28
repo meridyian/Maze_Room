@@ -63,3 +63,6 @@ MonoBehaviour:
   - {fileID: 6625064625604100361, guid: fe8b2a86e8098408fb1328089bd63f31, type: 3}
   - {fileID: 3590698232775037905, guid: d8a704d460b2b4b5391146d2829328ea, type: 3}
   - {fileID: 6918262826675905622, guid: 6f7085edfd1484292b053f446b880940, type: 3}
+  doorPrefab: {fileID: 6050384692388464899, guid: 4b954aeaadf024eed8d6a4d4d4c9985b, type: 3}
+  roomSettings: []
+  doorProbability: 0.1

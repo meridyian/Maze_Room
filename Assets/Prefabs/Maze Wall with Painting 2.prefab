@@ -49,6 +49,7 @@ MonoBehaviour:
   cell: {fileID: 0}
   otherCell: {fileID: 0}
   direction: 0
+  wall: {fileID: 2648169239075423993}
 --- !u!1 &4316604408323763799
 GameObject:
   m_ObjectHideFlags: 0

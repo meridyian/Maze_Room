@@ -15,7 +15,7 @@ public abstract class MazeCellEdge : MonoBehaviour
     // edges will be children of their cells, placed in the same location
     // cell should know that an edge is created
     // if you dont rotate it all of the walls will be positioned at the same direction
-    public void Initialize(MazeCell cell, MazeCell otherCell, MazeDirection direction)
+    public virtual void Initialize(MazeCell cell, MazeCell otherCell, MazeDirection direction)
     {
         this.cell = cell;
         this.otherCell = otherCell;
