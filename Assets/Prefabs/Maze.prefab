@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passagePrefab: {fileID: 7274177657988639574, guid: b226fa213041b4911bc4e2eedc9537c8, type: 3}
-  wallPrefab: {fileID: 1619503944906733735, guid: ba0cc1ba5525b40d8b07083560e5238c, type: 3}
   sizeX: 20
   sizeZ: 20
   cellPrefab: {fileID: 5819147095693086346, guid: f544faa8f417641508aa0600d1073ef1, type: 3}
@@ -53,3 +52,14 @@ MonoBehaviour:
     x: 20
     z: 20
   generationStepDelay: 0
+  wallPrefabs:
+  - {fileID: 1619503944906733735, guid: ba0cc1ba5525b40d8b07083560e5238c, type: 3}
+  - {fileID: 1619503944906733735, guid: ba0cc1ba5525b40d8b07083560e5238c, type: 3}
+  - {fileID: 1619503944906733735, guid: ba0cc1ba5525b40d8b07083560e5238c, type: 3}
+  - {fileID: 1619503944906733735, guid: ba0cc1ba5525b40d8b07083560e5238c, type: 3}
+  - {fileID: 1619503944906733735, guid: ba0cc1ba5525b40d8b07083560e5238c, type: 3}
+  - {fileID: 1619503944906733735, guid: ba0cc1ba5525b40d8b07083560e5238c, type: 3}
+  - {fileID: 1619503944906733735, guid: ba0cc1ba5525b40d8b07083560e5238c, type: 3}
+  - {fileID: 6625064625604100361, guid: fe8b2a86e8098408fb1328089bd63f31, type: 3}
+  - {fileID: 3590698232775037905, guid: d8a704d460b2b4b5391146d2829328ea, type: 3}
+  - {fileID: 6918262826675905622, guid: 6f7085edfd1484292b053f446b880940, type: 3}

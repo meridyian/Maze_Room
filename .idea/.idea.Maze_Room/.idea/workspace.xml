@@ -14,6 +14,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MazeCellEdge.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MazeDirection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MazeDirections.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MazeDoor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.17.1/Editor/PlasticSCM/Views/CreateWorkspace/Dialogs/RepositoriesListView.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -73,7 +74,7 @@
       <option name="presentableId" value="Default" />
       <updated>1672128245760</updated>
       <workItem from="1672128246762" duration="17347000" />
-      <workItem from="1672217758613" duration="751000" />
+      <workItem from="1672217758613" duration="1374000" />
     </task>
     <servers />
   </component>
