@@ -44,10 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de6c4ecba5435897010a1868792a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  passagePrefab: {fileID: 7274177657988639574, guid: b226fa213041b4911bc4e2eedc9537c8, type: 3}
+  wallPrefab: {fileID: 1619503944906733735, guid: ba0cc1ba5525b40d8b07083560e5238c, type: 3}
   sizeX: 20
   sizeZ: 20
   cellPrefab: {fileID: 5819147095693086346, guid: f544faa8f417641508aa0600d1073ef1, type: 3}
   size:
     x: 20
     z: 20
-  generationStepDelay: 1
+  generationStepDelay: 0

@@ -12,9 +12,10 @@ public class Maze : MonoBehaviour
     private MazeCell[,] cells;
     public IntVector2 size;
     public float generationStepDelay;
+   
 
 
-    public MazeCell GetCell ( IntVector2 coordinates)
+    public MazeCell GetCell (IntVector2 coordinates)
     {
         return cells[coordinates.x, coordinates.z];
     }
@@ -43,19 +44,24 @@ public class Maze : MonoBehaviour
 
     
     // retrieve current cell, check whether the move is possible
-    // remove cells from list
+    // remove cells whose all edges are initializedfrom list 
     private void DoNextGenerationStep(List<MazeCell> activeCells)
     {
         // since you are moving from last cell to a random direaction
         int currentIndex = activeCells.Count - 1;
         MazeCell currentCell = activeCells[currentIndex];
-        MazeDirection direction = MazeDirections.RandomValue;
+        if (currentCell.IsFullyInitialized)
+        {
+            activeCells.RemoveAt(currentIndex);
+            return;
+        }
+        MazeDirection direction = currentCell.RandomUninitializedDirection;
         IntVector2 coordinates = currentCell.coordinates + direction.ToIntVector2();
         
         // while you are inside of the maze 
         if (ContainsCoordinates(coordinates))
         {
-            MazeCell neighbor == GetCell(coordinates);
+            MazeCell neighbor = GetCell(coordinates);
             //check if the current cell's neighbor doesnt exist yet if you dont have create a cell
             //since youc reated a cell create a passage among them
             if (neighbor == null)
@@ -67,15 +73,15 @@ public class Maze : MonoBehaviour
             // if there is already a neighbour put a wall
             else
             {
-                CreateWall(currentCell, null, direction);
-                activeCells.RemoveAt(currentIndex);
+                CreateWall(currentCell, neighbor, direction);
+                // dont remove cells in here
             }
         }
         // if ypu are on  the maze boundaries create a wall
         else
         {
             CreateWall(currentCell, null, direction);
-            activeCells.RemoveAt(currentIndex);
+            // dont remove the cells here
         }
         
     }
